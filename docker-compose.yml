@@ -2,8 +2,13 @@ version: "3.7"
 
 services:
 
-  jenkins:
-    image: jenkins/jenkins:lts
+  jenkins.rdok.dev:
+    build:
+      context: .
+      args:
+        - DOCKER_GID
+    container_name: jenkins.rdok.dev
+    image: jenkins.rdok.dev
     restart: unless-stopped
     environment:
       - VIRTUAL_HOST
@@ -14,7 +19,7 @@ services:
       - 8080:8080
       - 5000:5000
     volumes:
-      - jenkins_home:/var/jenkins_home
+      - jenkins.rdok.dev:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
 networks:
@@ -23,4 +28,4 @@ networks:
       name: nginx-proxy
 
 volumes:
-  jenkins_home:
+  jenkins.rdok.dev:
