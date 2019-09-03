@@ -6,7 +6,7 @@ Docker based jenkins.
 Export .env.example according to your needs. 
 
 #### Expose docker socket
-[ ~jpetazzo/Using Docker-in-Docker for your CI or testing environment? Think twice.](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) has established running docker in docker is not a good idea. 
+[jpetazzo/Using Docker-in-Docker for your CI or testing environment? Think twice.](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) has established running docker in docker is not a good idea. 
 
 Instead expose the hosts's Docker socket to the Jenkins CI container. 
 
@@ -16,3 +16,8 @@ Find this docker group gid (`cat /etc/group | grep docker`) and append it as an 
 
 ### Run
 `compose up -d`
+
+### Upgrade
+- `docker pull jenkins/jenkins:lts`
+- `docker-compose down --remove-orphans`
+- `docker-compose up -d --build --force-recreate`
