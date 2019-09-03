@@ -18,6 +18,4 @@ Find this docker group gid (`cat /etc/group | grep docker`) and append it as an 
 `compose up -d`
 
 ### Upgrade
-- `docker pull jenkins/jenkins:lts`
-- `docker-compose down --remove-orphans`
-- `docker-compose up -d --build --force-recreate`
+- `docker-compose down && docker-compose build --pull && docker-compose up -d`
